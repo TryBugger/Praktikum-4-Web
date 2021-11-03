@@ -73,7 +73,6 @@
 
         $list_karyawan[$index]->set_level($data["level"]);
     }
-    
 ?>
 
 <!DOCTYPE <html>
@@ -107,7 +106,7 @@
             <tbody>
                 <?php
                     $no_urut = 1;
-                    if($_POST["filter"] == "All") {
+                    if($_POST == NULL || $_POST["filter"] == "All") {
                         foreach($list_karyawan as $karyawan) {
                 ?>
                             <tr>
