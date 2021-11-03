@@ -79,10 +79,44 @@ tr:hover {
     transition: 0.25s;
 }
 
+.formContainer {
+    margin: 40px 20px;
+    padding: 8px 20px;
+
+    text-align: center;
+}
+
+.filterButton {
+    margin: 0px 45px;
+    padding: 20px 35px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: #7ee8fa;
+    background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.filterButton:hover {
+    background-color: #9beaf8;
+    background-image: linear-gradient(#ffffff, #ffffff);
+
+    color: #016e46;
+
+    border: 1px solid #5be74b;
+
+    transition: .35s;
+}
+
 footer {
     text-align: center;
     padding: 1px;
-    margin: 100px 550px;
+    margin: 50px 550px;
 
     background-color: #f0f6f7;
 

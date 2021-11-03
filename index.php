@@ -73,6 +73,7 @@
 
         $list_karyawan[$index]->set_level($data["level"]);
     }
+    
 ?>
 
 <!DOCTYPE <html>
@@ -105,22 +106,49 @@
             </thead>
             <tbody>
                 <?php
-                    foreach($list_karyawan as $index=>$karyawan) {
+                    $no_urut = 1;
+                    if($_POST["filter"] == "All") {
+                        foreach($list_karyawan as $karyawan) {
                 ?>
-                        <tr>
-                            <td><?= $index + 1 ?></td>
-                            <td><?= $karyawan->get_nama() ?></td>
-                            <td style="text-align: left;"><?= $karyawan->get_ttl() ?></td>
-                            <td><?= $karyawan->get_gender() ?></td>
-                            <td><?= $karyawan->get_level() ?></td>
-                            <td><?= $karyawan->get_status() ?></td>
-                            <td><?= $karyawan->get_gaji() ?></td>
-                        </tr>
+                            <tr>
+                                <td><?= $no_urut ?></td>
+                                <td><?= $karyawan->get_nama() ?></td>
+                                <td style="text-align: left;"><?= $karyawan->get_ttl() ?></td>
+                                <td><?= $karyawan->get_gender() ?></td>
+                                <td><?= $karyawan->get_level() ?></td>
+                                <td><?= $karyawan->get_status() ?></td>
+                                <td><?= $karyawan->get_gaji() ?></td>
+                            </tr>
                 <?php 
+                            $no_urut += 1;
+                        }
+                    } else {
+                        foreach($list_karyawan as $index=>$karyawan) {
+                            if($karyawan->get_status() == $_POST["filter"]) {
+                ?>
+                                <tr>
+                                    <td><?= $no_urut ?></td>
+                                    <td><?= $karyawan->get_nama() ?></td>
+                                    <td style="text-align: left;"><?= $karyawan->get_ttl() ?></td>
+                                    <td><?= $karyawan->get_gender() ?></td>
+                                    <td><?= $karyawan->get_level() ?></td>
+                                    <td><?= $karyawan->get_status() ?></td>
+                                    <td><?= $karyawan->get_gaji() ?></td>
+                                </tr>
+                <?php
+                                $no_urut += 1;
+                            }
+                        }
                     }
                 ?>
             </tbody>
         </table>
+
+        <form action="" method="POST" class="formContainer">
+            <button class="filterButton" name="filter" value="Part time">Part Time</button>
+            <button class="filterButton" name="filter" value="All">All</button>
+            <button class="filterButton" name="filter" value="Full time">Full Time</button>
+        </form>
 
         <footer>
             <p>Created By</p>
